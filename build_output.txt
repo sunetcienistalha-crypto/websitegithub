@@ -1,0 +1,67 @@
+﻿
+> portfolio@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to compi
+le.
+At line:1 char:1
++ & "C:\Program Files\node
+js/node.exe" "C:\Program F
+iles\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (F  
+  ailed to compile.:Str   
+ ing) [], RemoteExcept    
+ion
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+
+./lib/siteData.ts:383:17
+Type error: Argument of ty
+pe 'Record<string, unknown
+>' is not assignable to pa
+rameter of type 'SetStateA
+ction<SiteData>'.
+  Type 'Record<string, unk
+nown>' is missing the foll
+owing properties from type
+ 'SiteData': hero, about, 
+experiences, skills, and 2
+ more.
+
+[0m [90m 381 |[39m     
+  [36mif[39m (stored) {
+[0m
+[0m [90m 382 |[39m     
+    [36mconst[39m parsed
+ [33m=[39m [33mJSON[39
+m[33m.[39mparse(stored)
+[33m;[39m[0m
+[0m[31m[1m>[22m[39m[
+90m 383 |[39m         set
+Data(deepMerge([33mDEFAUL
+T_SITE_DATA[39m[33m,[39
+m parsed))[33m;[39m[0m
+[0m [90m     |[39m     
+            [31m[1m^[22
+m[39m[0m
+[0m [90m 384 |[39m     
+  }[0m
+[0m [90m 385 |[39m     
+} [36mcatch[39m {[0m
+[0m [90m 386 |[39m     
+  [90m// fallback to defa
+ults[39m[0m
+Next.js build worker exite
+d with code: 1 and signal:
+ null
