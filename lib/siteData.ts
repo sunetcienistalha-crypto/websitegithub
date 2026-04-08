@@ -30,11 +30,12 @@ export function useSiteData() {
         // Migration: Replace old role title and GPA
         raw = raw.replace(/İHA Takım Lideri/g, "İHA Mekanik Ekip Üyesi");
         raw = raw.replace(/3\.34/g, "3.37");
+
         // Path prefixing for GitHub Pages subpath
         const prefix = "/websitegithub";
         let rawWithPrefix = raw;
         if (!raw.includes(prefix + "/photos/")) {
-          rawWithPrefix = raw.replace(/"\/photos\//g, `"${prefix}/photos/`);
+          rawWithPrefix = rawWithPrefix.replace(/"\/photos\//g, `"${prefix}/photos/`);
         }
         if (!raw.includes(prefix + "/cv.pdf")) {
           rawWithPrefix = rawWithPrefix.replace(/"\/cv\.pdf"/g, `"${prefix}/cv.pdf"`);
