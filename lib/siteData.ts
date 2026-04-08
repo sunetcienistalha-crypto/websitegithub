@@ -30,14 +30,26 @@ export function useSiteData() {
         // Migration: Replace old role title and GPA
         raw = raw.replace(/İHA Takım Lideri/g, "İHA Mekanik Ekip Üyesi");
         raw = raw.replace(/3\.34/g, "3.37");
-        const parsed = JSON.parse(raw);
+        // Path prefixing for GitHub Pages subpath
+        const prefix = "/websitegithub";
+        let rawWithPrefix = raw;
+        if (!raw.includes(prefix + "/photos/")) {
+          rawWithPrefix = raw.replace(/"\/photos\//g, `"${prefix}/photos/`);
+        }
+        if (!raw.includes(prefix + "/cv.pdf")) {
+          rawWithPrefix = rawWithPrefix.replace(/"\/cv\.pdf"/g, `"${prefix}/cv.pdf"`);
+        }
+        if (!raw.includes(prefix + "/logo.png")) {
+          rawWithPrefix = rawWithPrefix.replace(/"\/logo\.png"/g, `"${prefix}/logo.png"`);
+        }
+        const parsed = JSON.parse(rawWithPrefix);
         
         // Repair broken slugs from accidental manual edits
         if (parsed.events) {
-          parsed.events = parsed.events.map((ev: EventItem) => ({ ...ev, slug: slugify(ev.slug) }));
+          parsed.events = parsed.events.map((ev: EventItem) => ({ ...ev, slug: slugify(ev.slug || "") }));
         }
         if (parsed.projects) {
-          parsed.projects = parsed.projects.map((proj: ProjectDetail) => ({ ...proj, slug: slugify(proj.slug) }));
+          parsed.projects = parsed.projects.map((proj: ProjectDetail) => ({ ...proj, slug: slugify(proj.slug || "") }));
         }
         
         // Backward compatibility: If old events in localStorage miss 'slug', auto-fill them
